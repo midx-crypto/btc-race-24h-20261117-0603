@@ -85,7 +85,7 @@ class Bot:
                     or hold >= MAX_HOLD_BARS):
                 self.cool_until = i + COOLDOWN_BARS
                 return [{"side": "sell", "client_id": self._cid(), "symbol": SYMBOL,
-                         "qty": self.qty,
+                         "qty": str(self.qty),
                          "max_slippage_bps": MAX_SLIPPAGE_BPS}]
             return []
         if i <= self.cool_until:
@@ -104,7 +104,7 @@ class Bot:
         if self.cash < MIN_NOTIONAL:
             return []
         return [{"side": "buy", "client_id": self._cid(), "symbol": SYMBOL,
-                 "notional_quote_units": self.cash,
+                 "notional_quote_units": str(self.cash),
                  "max_slippage_bps": MAX_SLIPPAGE_BPS}]
 
 
